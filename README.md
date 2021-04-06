@@ -50,10 +50,10 @@ The action works without configuration, however you can provide options for cust
           types: |
             fix
             feat
-          # Configure which scopes are allowed.
+          # Configure which scopes are allowed, including matching on blobs.
           scopes: |
             core
-            ui
+            ui* 
           # Configure that a scope must always be provided.
           requireScope: true
           # Configure additional validation for the subject based on a regex.
