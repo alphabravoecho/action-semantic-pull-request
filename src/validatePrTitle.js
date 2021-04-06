@@ -1,6 +1,7 @@
 const conventionalCommitsConfig = require('conventional-changelog-conventionalcommits');
 const conventionalCommitTypes = require('conventional-commit-types');
 const parser = require('conventional-commits-parser').sync;
+const minimatch = require('minimatch');
 const formatMessage = require('./formatMessage');
 
 const defaultTypes = Object.keys(conventionalCommitTypes.types);
@@ -28,8 +29,17 @@ module.exports = async function validatePrTitle(
       .join('\n')}`;
   }
 
-  function isUnknownScope(s) {
-    return scopes && !scopes.includes(s);
+  function isUnknownScope(givenScope) {
+    let unknown = true;
+    if (scopes) {
+      scopes.forEach((scope) => {
+        if (minimatch(givenScope, scope)) {
+          unknown = false;
+        }
+      });
+    }
+
+    return unknown;
   }
 
   if (!result.type) {

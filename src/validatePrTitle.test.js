@@ -61,6 +61,10 @@ describe('defined scopes', () => {
     });
   });
 
+  it('allows a glob match for scopes', async () => {
+    await validatePrTitle('fix(core@TICKET-123): Bar', {scopes: ['core@*']});
+  });
+
   it('throws when an unknown scope is detected within multiple scopes', async () => {
     await expect(
       validatePrTitle('fix(core,e2e,foo,bar): Bar', {scopes: ['foo', 'core']})
