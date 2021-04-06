@@ -2,6 +2,8 @@
 
 Thank you very much for contributing to this project!
 
+## Workflow
+
 Due to the way event triggers work with GitHub actions it's a bit harder to test your changes.
 
 Simple changes that can be unit tested can be implemented with the regular workflow where you fork the repo and create a pull request. Note however that the new version of the action won't be executed in the workflows of this repository. We have to rely on the unit tests in this case.
@@ -14,3 +16,8 @@ To do this, please follow this process:
 2. Create a PR in **your own repo**.
 3. The "Lint PR title preview (current branch)" workflow will run the new version and will help you validate the change.
 4. Create a PR to this repo with the changes. In this case the preview workflow will fail, but we'll know that it works since you tested it in the fork. Please include a include a link to a workflow where you tested the current state of this pull request.
+
+## Setup
+
+1. install npm, node 12.0.0 and yarn (mac users can use `n`, see https://medium.com/@ExplosionPills/dont-use-sudo-with-npm-still-66e609f5f92)
+2. run tests with `npm run test`
