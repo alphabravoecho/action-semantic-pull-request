@@ -19,5 +19,7 @@ To do this, please follow this process:
 
 ## Setup
 
-1. install npm, node 12.0.0 and yarn (mac users can use `n`, see https://medium.com/@ExplosionPills/dont-use-sudo-with-npm-still-66e609f5f92)
-2. run tests with `npm run test`
+1. install npm, node 12.0.0 and yarn 
+    1. for Mac: consider using `n`, see https://medium.com/@ExplosionPills/dont-use-sudo-with-npm-still-66e609f5f92)
+2. install dependencies with `yarn install`
+3. run tests with `yarn test`
