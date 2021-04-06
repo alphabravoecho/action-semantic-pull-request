@@ -65,6 +65,14 @@ describe('defined scopes', () => {
     await validatePrTitle('fix(core@TICKET-123): Bar', {scopes: ['core@*']});
   });
 
+  it('throws when an unknown scope is detected when using glob', async () => {
+    await expect(
+      validatePrTitle('fix(core,e2e,foo,bar): Bar', {scopes: ['pizza*']})
+    ).rejects.toThrow(
+      'Unknown scopes "core,e2e,foo,bar" found in pull request title "fix(core,e2e,foo,bar): Bar". Use one of the available scopes: pizza*.'
+    );
+  });
+
   it('allows multiple matching scopes with a non-matching glob', async () => {
     await validatePrTitle('fix(core,e2e): Bar', {
       scopes: ['core', 'e2e', 'web', 'pizza*']
